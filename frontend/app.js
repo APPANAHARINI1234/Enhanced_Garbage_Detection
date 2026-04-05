@@ -11,7 +11,11 @@
 
 // ── CONFIG ────────────────────────────────────────────
 // ▼▼▼  CHANGE THIS to your backend server URL  ▼▼▼
-const API_BASE = "https://enhanced-garbage-detection.onrender.com";
+const API_BASE =
+  window.location.hostname === "localhost" ||
+  window.location.hostname === "127.0.0.1"
+    ? "http://127.0.0.1:5000"
+    : "https://enhanced-garbage-detection.onrender.com";
 // ▲▲▲  e.g. "http://192.168.1.10:5000" on LAN  ▲▲▲
 // ▲▲▲  or "https://your-app.onrender.com"       ▲▲▲
 
