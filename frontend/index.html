@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>WasteVision — Garbage Detection</title>
+  <title>Garbage Detection</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -11,75 +11,46 @@
 </head>
 <body>
 
-  <!-- ═══════════════════ HEADER ═══════════════════ -->
+  
   <header class="site-header">
     <div class="header-inner">
       <div class="brand">
         <div class="brand-mark">W</div>
         <div class="brand-text">
-          <span class="brand-name">WasteVision</span>
+          <span class="brand-name">Enhanced waste</span>
           <span class="brand-sub">Detection System</span>
         </div>
       </div>
 
-      <nav class="header-tags">
-        <span class="tag">YOLOv8s</span>
-        <span class="tag">EfficientViT CGA</span>
-        <span class="tag tag--dim">18 Classes</span>
-      </nav>
     </div>
   </header>
 
-  <!-- ═══════════════════ HERO ═══════════════════ -->
+  
   <section class="hero">
     <div class="hero-inner">
       <p class="hero-eyebrow">Garbage Detection & Classification</p>
       <h1 class="hero-title">
-        See what <em>others</em><br />overlook
+       Using a custom-trained YOLOv8s + EfficientViT model
       </h1>
-      <p class="hero-desc">
-        Upload an image or use your webcam. The YOLOv8s&nbsp;+&nbsp;EfficientViT
-        hybrid model identifies and classifies litter across 18 categories —
-        trained on the TACO dataset over 100 epochs.
-      </p>
     </div>
 
-    <div class="hero-stats">
-      <div class="stat">
-        <span class="stat-val">100</span>
-        <span class="stat-lbl">Epochs</span>
-      </div>
-      <div class="stat-divider"></div>
-      <div class="stat">
-        <span class="stat-val">18</span>
-        <span class="stat-lbl">Classes</span>
-      </div>
-      <div class="stat-divider"></div>
-      <div class="stat">
-        <span class="stat-val">640</span>
-        <span class="stat-lbl">px Input</span>
-      </div>
-      <div class="stat-divider"></div>
-      <div class="stat">
-        <span class="stat-val">CGA</span>
-        <span class="stat-lbl">Attention</span>
-      </div>
-    </div>
+    
+     
   </section>
 
-  <!-- ═══════════════════ MAIN CONTENT ═══════════════════ -->
+  
   <main class="workspace">
 
-    <!-- ── LEFT: Upload controls ── -->
+   
     <aside class="controls-panel">
 
-      <!-- Tab switcher -->
+     
       <div class="tab-row">
         <button class="tab active" data-tab="upload">Upload Image</button>
         <button class="tab" data-tab="webcam">Webcam</button>
       </div>
 
-      <!-- Upload tab -->
+    
       <div class="tab-content active" id="tab-upload">
         <div class="dropzone" id="dropzone">
           <input type="file" id="imageInput" accept="image/*" />
@@ -101,7 +72,7 @@
         </div>
       </div>
 
-      <!-- Webcam tab -->
+     
       <div class="tab-content" id="tab-webcam">
         <div class="webcam-box" id="webcamBox">
           <div class="webcam-idle" id="webcamIdle">
@@ -120,7 +91,7 @@
         </div>
       </div>
 
-      <!-- Confidence control -->
+    
       <div class="control-group">
         <div class="control-row">
           <label class="control-label" for="confSlider">Confidence threshold</label>
@@ -130,7 +101,7 @@
         <p class="control-hint">Detections below this score are hidden.</p>
       </div>
 
-      <!-- Run button -->
+     
       <button class="btn btn--run" id="runBtn" disabled>
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
@@ -138,17 +109,17 @@
         Run Detection
       </button>
 
-      <!-- API status -->
+    
       <div class="api-status" id="apiStatus">
         <span class="api-dot" id="apiDot"></span>
         <span class="api-text" id="apiText">Checking backend...</span>
       </div>
     </aside>
 
-    <!-- ── RIGHT: Results ── -->
+   
     <section class="results-panel">
 
-      <!-- Canvas output -->
+     
       <div class="canvas-wrap" id="canvasWrap">
         <div class="canvas-empty" id="canvasEmpty">
           <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
@@ -170,8 +141,7 @@
           </button>
         </div>
       </div>
-
-      <!-- Detection results -->
+  
       <div class="detections" id="detectionsPanel" style="display:none">
         <div class="det-header">
           <h2 class="det-title">Detections</h2>
@@ -191,7 +161,7 @@
     </section>
   </main>
 
-  <!-- ═══════════════════ CLASSES REFERENCE ═══════════════════ -->
+ 
   <section class="classes-section">
     <div class="classes-inner">
       <h3 class="classes-heading">Detectable classes</h3>
@@ -199,28 +169,7 @@
     </div>
   </section>
 
-  <!-- ═══════════════════ ARCH FOOTER ═══════════════════ -->
-  <footer class="arch-footer">
-    <div class="arch-inner">
-      <div class="arch-block">
-        <h4>Backbone</h4>
-        <p>YOLOv8s pretrained on COCO. Handles multi-scale local feature extraction across the detection neck.</p>
-      </div>
-      <div class="arch-block">
-        <h4>EfficientViT CGA</h4>
-        <p>Cascaded Group Attention replaces the layer-6 C2f block. Adds global context with depthwise attention at 1/10th the cost of full self-attention.</p>
-      </div>
-      <div class="arch-block">
-        <h4>Training Strategy</h4>
-        <p>Hard-class 3× oversampling. Differential LRs — EfficientViT at full rate, YOLO backbone at 0.1× to preserve pretrained features.</p>
-      </div>
-      <div class="arch-block">
-        <h4>Dataset</h4>
-        <p>TACO balanced split. 80/20 train-val. Mosaic, MixUp, CopyPaste augmentation. Cosine LR schedule over 100 epochs.</p>
-      </div>
-    </div>
-  </footer>
-
+  
   <!-- ═══════════════════ LOADING OVERLAY ═══════════════════ -->
   <div class="loading-overlay" id="loadingOverlay">
     <div class="loader-box">

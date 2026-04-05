@@ -1,13 +1,4 @@
-"""
-WasteVision — Flask backend
-Runs YOLOv8s + EfficientViT CGA inference and serves results to the frontend.
 
-Quick start:
-  pip install flask ultralytics pillow flask-cors
-  python app.py
-
-The server runs on http://localhost:5000
-"""
 
 import io
 import sys
@@ -22,14 +13,9 @@ from PIL import Image
 from ultralytics import YOLO
 from ultralytics.nn.modules.block import C2f
 
-# ── Model path ────────────────────────────────────────────────
-# Points to your already-extracted folder: efficientvit_100epochs/weights/best.pt
-# Place app.py so this relative path resolves, OR use an absolute path:
-#   Windows: MODEL_PATH = r"C:\Users\YourName\efficientvit_100epochs\weights\best.pt"
-#   Linux/Mac: MODEL_PATH = "/home/yourname/efficientvit_100epochs/weights/best.pt"
+
 MODEL_PATH = "../efficientvit_100epochs/weights/best.pt"
 
-# ── Class names (must match training order) ───────────────────
 CLASS_NAMES = [
     'Aluminium foil', 'Bottle cap', 'Bottle', 'Broken glass', 'Can',
     'Carton', 'Cigarette', 'Cup', 'Lid', 'Other litter',
@@ -38,9 +24,7 @@ CLASS_NAMES = [
 ]
 
 
-# ── Re-declare custom modules (needed for torch.load to work) ─
-# These must be defined so that PyTorch can deserialise the saved
-# model that contains C2f_EfficientViT layers.
+
 
 class Conv2d_BN(nn.Module):
     def __init__(self, in_ch, out_ch, kernel=1, stride=1, padding=0, groups=1):
@@ -200,5 +184,4 @@ def detect():
 
 
 if __name__ == "__main__":
-    # debug=False in production; host="0.0.0.0" to expose on network
     app.run(host="0.0.0.0", port=5000, debug=True)
